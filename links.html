@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Link maker | Fluentry-UK demo site</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f3f7fb;color:#17324d;line-height:1.5;padding:18px}
+.box{max-width:640px;margin:0 auto;background:#fff;border:1px solid #d3e0ed;border-radius:18px;padding:20px}
+h1{font-size:22px;color:#0f3d66;margin-bottom:4px}
+p.lead{color:#4a6078;font-size:14px;margin-bottom:16px}
+label{display:block;font-weight:600;font-size:13.5px;color:#0f3d66;margin:14px 0 5px}
+input,select{width:100%;padding:11px 12px;border:1.5px solid #cddcea;border-radius:11px;font:inherit;font-size:15px;background:#fff}
+small{display:block;color:#4a6078;font-size:12.5px;margin-top:4px}
+.out{margin-top:20px;background:#fffdf4;border:2px solid #ecd48a;border-radius:14px;padding:14px}
+.out code{display:block;word-break:break-all;font-size:13.5px;background:#fff;border:1px solid #e6d9a8;border-radius:10px;padding:10px;margin:8px 0}
+button{background:#0f3d66;color:#fff;border:0;border-radius:999px;padding:11px 20px;font:600 14px system-ui;cursor:pointer}
+.how{margin-top:18px;font-size:13.5px;color:#35506b;background:#eaf2fa;border-radius:12px;padding:12px 14px}
+.how li{margin:4px 0 4px 18px}
+.ok{color:#176238;font-weight:600;margin-left:10px;font-size:13px}
+</style></head>
+<body><div class="box">
+<h1>Link maker</h1>
+<p class="lead">Make a tagged link for each post, so Shopify can show which post brought a sale.</p>
+
+<label for="base">Your demo site address</label>
+<input id="base" placeholder="https://yourname.github.io/your-repo/">
+<small>The web address of the folder that holds index.html. It is remembered on this device.</small>
+
+<label for="dest">Where should the link go?</label>
+<select id="dest"></select>
+
+<label for="src">Where will you post it?</label>
+<select id="src">
+  <option>instagram</option><option>tiktok</option><option>facebook</option><option>linkedin</option><option>whatsapp</option><option>email</option><option>other</option>
+</select>
+
+<label for="med">What kind of post?</label>
+<select id="med">
+  <option value="bio">Link in bio</option><option value="story">Story link sticker</option><option value="dm">Direct message</option>
+  <option value="reel">Reel</option><option value="comment">Comment reply</option><option value="post">Post</option><option value="ad">Ad</option>
+</select>
+
+<label for="name">Post name</label>
+<input id="name" placeholder="for example: reel-feedback-1">
+<small>Use letters, numbers and hyphens. Give every post its own name and keep a list.</small>
+
+<div class="out"><strong>Your link</strong>
+  <code id="url">Fill in the boxes above</code>
+  <button id="copy" type="button">Copy link</button><span class="ok" id="ok"></span>
+</div>
+
+<div class="how"><strong>Where to see the results in Shopify</strong>
+<ul><li>Analytics, then Reports, then the Marketing category.</li>
+<li>Look under sales and sessions attributed to marketing, and open the campaign list. Your post name appears there.</li>
+<li>The "content" tag shows which toolkit the buyer was in, whether they chose the Series or a single toolkit, and which button they pressed.</li></ul>
+<p style="margin-top:8px">Instagram lets you add several links to your bio. One idea: use a different post name for each link, and a fresh link in every Story sticker.</p></div>
+</div>
+<script src="fluentry-config.js"></script>
+<script>
+(function(){
+  var C=window.FLUENTRY_CONFIG||{toolkits:{}};
+  var dest=document.getElementById('dest');
+  dest.innerHTML='<option value="">The demo index (all toolkits)</option>'+Object.keys(C.toolkits).filter(function(k){return C.toolkits[k].ready&&C.toolkits[k].demo}).map(function(k){return '<option value="'+C.toolkits[k].demo+'">'+C.toolkits[k].title.replace(/&/g,'&amp;')+'</option>'}).join('');
+  var base=document.getElementById('base');
+  try{base.value=localStorage.getItem('f_base')||''}catch(e){}
+  function clean(v){return String(v||'').toLowerCase().replace(/[^a-z0-9._-]+/g,'-').replace(/^-+|-+$/g,'').slice(0,60)}
+  function make(){
+    var b=base.value.trim(); if(!b){document.getElementById('url').textContent='Fill in the boxes above';return}
+    if(!/\/$/.test(b)) b+='/';
+    try{localStorage.setItem('f_base',base.value.trim())}catch(e){}
+    var n=clean(document.getElementById('name').value)||'unnamed';
+    var u=b+dest.value+'?utm_source='+encodeURIComponent(document.getElementById('src').value)+'&utm_medium='+encodeURIComponent(document.getElementById('med').value)+'&post='+encodeURIComponent(n);
+    document.getElementById('url').textContent=u; return u;
+  }
+  ['base','dest','src','med','name'].forEach(function(id){document.getElementById(id).addEventListener('input',make);document.getElementById(id).addEventListener('change',make)});
+  document.getElementById('copy').onclick=function(){var u=make(); if(!u)return;
+    var done=function(){document.getElementById('ok').textContent='Copied';setTimeout(function(){document.getElementById('ok').textContent=''},1800)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(done,function(){})}else{var t=document.createElement('textarea');t.value=u;document.body.appendChild(t);t.select();try{document.execCommand('copy');done()}catch(e){}t.remove()}};
+  make();
+})();
+</script></body></html>

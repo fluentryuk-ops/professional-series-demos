@@ -1,0 +1,26 @@
+/* Faded photo banners for the hero of the index and of every demo.
+   The picture sits behind the text, covers the right-hand part of the banner and fades out to the left.
+   To change a picture, replace the file in the assets folder (keep the same name). */
+.hero,.card[data-hero]{position:relative;isolation:isolate}
+.hero{overflow:hidden}
+.card[data-hero]{overflow:hidden}
+.hero::before,.card[data-hero]::before{
+  content:"";position:absolute;top:0;bottom:0;right:0;width:62%;z-index:-1;pointer-events:none;
+  background-repeat:no-repeat;background-size:cover;background-position:right center;opacity:.36;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 58%);mask-image:linear-gradient(90deg,transparent 0,#000 58%)}
+.card[data-hero]::before{width:50%;opacity:.22}
+@media (max-width:560px){.hero::before{width:80%;opacity:.3}.card[data-hero]::before{width:56%}}
+
+/* ---- which picture goes where ---- */
+html[data-hero="hub"] .hero::before{background-image:url(assets/hero-series.jpg);background-position:70% center}
+html[data-hero="small-talk"] .hero::before,.card[data-hero="small-talk"]::before{background-image:url(assets/photo-1.jpg);background-position:20% 50%}
+html[data-hero="job-interview-1"] .hero::before,.card[data-hero="job-interview-1"]::before{background-image:url(assets/photo-8.jpg);background-position:35% 80%}
+html[data-hero="interview-confidence"] .hero::before,.card[data-hero="interview-confidence"]::before{background-image:url(assets/photo-7.jpg);background-position:60% 50%}
+html[data-hero="read-the-room"] .hero::before,.card[data-hero="read-the-room"]::before{background-image:url(assets/photo-2.jpg);background-position:70% 50%}
+html[data-hero="email-etiquette"] .hero::before,.card[data-hero="email-etiquette"]::before{background-image:url(assets/crop-email.jpg);background-position:25% center}
+html[data-hero="pronunciation"] .hero::before,.card[data-hero="pronunciation"]::before{background-image:url(assets/crop-skyline-shard.jpg);background-position:70% center}
+html[data-hero="hear-it-right"] .hero::before,.card[data-hero="hear-it-right"]::before{background-image:url(assets/crop-skyline-bigben.jpg);background-position:55% center}
+html[data-hero="interrupting"] .hero::before,.card[data-hero="interrupting"]::before{background-image:url(assets/photo-1.jpg);background-position:92% 45%}
+html[data-hero="feedback"] .hero::before,.card[data-hero="feedback"]::before{background-image:url(assets/photo-8.jpg);background-position:85% 15%}
+
+html[data-hero="interview-confidence"] .hero::before{width:52%;opacity:.28}
