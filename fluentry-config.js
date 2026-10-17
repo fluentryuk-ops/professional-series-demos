@@ -2,7 +2,7 @@
    FLUENTRY-UK DEMO SITE: ONE PLACE TO EDIT LINKS AND PRICES
    Each toolkit url is its Shopify product page. Only toolkits with ready: true are shown as live.
    ORDER: toolkits appear on the page in the order listed below (interactive demos first, then PDF-only).
-   img: thumbnail file in the assets folder. featured: true makes a card full width.
+   img: thumbnail file in the assets folder. preview: up to a few PDF page images (shown when someone taps "Preview pages"). featured: true makes a card full width.
    (A link left as the homepage will open your homepage.)
    ========================================================================== */
 window.FLUENTRY_CONFIG = {
@@ -78,6 +78,12 @@ window.FLUENTRY_CONFIG = {
     },
     "c1-vocab": {
       title: "C1 Workplace Vocabulary & Communication Toolkit", icon: "🎓",
+      img: "assets/thumb-c1-vocab.jpg",
+      preview: [
+        "assets/preview-c1-vocab-1.jpg",
+        "assets/preview-c1-vocab-2.jpg",
+        "assets/preview-c1-vocab-3.jpg"
+      ],
       featured: true, level: "C1-C2",
       blurb: "Precision language for high-stakes UK workplace communication.",
       chips: ["232-page PDF", "10 sections", "C1-C2"],
@@ -86,6 +92,12 @@ window.FLUENTRY_CONFIG = {
     },
     "small-talk": {
       title: "Small Talk & Water Cooler English", icon: "☕",
+      img: "assets/thumb-small-talk.jpg",
+      preview: [
+        "assets/preview-small-talk-1.jpg",
+        "assets/preview-small-talk-2.jpg",
+        "assets/preview-small-talk-3.jpg"
+      ],
       blurb: "How to join the conversation instead of standing at the edge of it.",
       chips: ["19-page PDF", "7 sections"],
       demo: "", pdf: true,
@@ -93,6 +105,12 @@ window.FLUENTRY_CONFIG = {
     },
     "salary-promotion": {
       title: "Salary & Promotion Conversation Scripts", icon: "💷",
+      img: "assets/thumb-salary-promotion.jpg",
+      preview: [
+        "assets/preview-salary-promotion-1.jpg",
+        "assets/preview-salary-promotion-2.jpg",
+        "assets/preview-salary-promotion-3.jpg"
+      ],
       blurb: "What to say, in what order, when money and title are on the table.",
       chips: ["19-page PDF", "7 sections"],
       demo: "", pdf: true,
@@ -100,6 +118,12 @@ window.FLUENTRY_CONFIG = {
     },
     "self-advocacy": {
       title: "Self-Advocacy & Appraisal Language", icon: "🙋",
+      img: "assets/thumb-self-advocacy.jpg",
+      preview: [
+        "assets/preview-self-advocacy-1.jpg",
+        "assets/preview-self-advocacy-2.jpg",
+        "assets/preview-self-advocacy-3.jpg"
+      ],
       blurb: "Describe your own work without sounding arrogant, or invisible.",
       chips: ["13-page PDF", "7 sections"],
       demo: "", pdf: true,
@@ -107,6 +131,12 @@ window.FLUENTRY_CONFIG = {
     },
     "slack-teams": {
       title: "Slack & Teams: Register-Shifting", icon: "💻",
+      img: "assets/thumb-slack-teams.jpg",
+      preview: [
+        "assets/preview-slack-teams-1.jpg",
+        "assets/preview-slack-teams-2.jpg",
+        "assets/preview-slack-teams-3.jpg"
+      ],
       blurb: "Same app, different tone: when to be casual and when to switch it up.",
       chips: ["11-page PDF", "8 sections"],
       demo: "", pdf: true,
