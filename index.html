@@ -84,6 +84,7 @@ footer a{color:var(--navy);font-weight:600;text-decoration:none}
       (live?'<p>'+esc(t.blurb)+'</p>':'<span class="badge">COMING SOON</span>')+
       ((live&&t.chips.length)?'<div class="chips">'+t.chips.map(function(c){return '<i>'+esc(c)+'</i>'}).join('')+'</div>':'')+
       '<a class="btn" '+(live?'href="'+(window.FTRACK?window.FTRACK.forward(t.demo):t.demo)+'"':'')+'>'+(live?'Try the free demo &rarr;':(t.ready?'Demo coming soon':'Coming soon'))+'</a></div>'}).join('');
+  if(C.member&&C.member.url){var n=document.getElementById('note');var a=document.createElement('p');a.className='note';a.id='member-link';a.innerHTML='Already bought a toolkit? <a href="'+C.member.url.replace(/\/+$/,'')+'/" style="color:#0f3d66;font-weight:600">Open your toolkits</a>';n.parentNode.insertBefore(a,n.nextSibling)}
   document.getElementById('note').textContent='Each demo has a free preview, locked sections and a swipeable peek inside the PDF. Buy the Complete Series or just the toolkit you want, right from the demo.';
 })();
 </script>
